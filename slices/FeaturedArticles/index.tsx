@@ -46,7 +46,7 @@ const FeaturedArticles = ({ slice }: FeaturedArticlesProps) => {
         </h3>
         <PrismicRichText field={article.data.excerpt} />
         <Link
-          href={`/article/${article.uid}`}
+          href={`/pages/articles/${article.uid}`}
           className="text-blue-500 hover:underline"
         >
           Read More →
