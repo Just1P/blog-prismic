@@ -4,40 +4,6 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutusDocumentDataSlicesSlice = AboutSectionSlice;
-
-/**
- * Content for AboutUs documents
- */
-interface AboutusDocumentData {
-  /**
-   * Slice Zone field in *AboutUs*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: aboutus.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<AboutusDocumentDataSlicesSlice>;
-}
-
-/**
- * AboutUs document from Prismic
- *
- * - **API ID**: `aboutus`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type AboutusDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<AboutusDocumentData>,
-    "aboutus",
-    Lang
-  >;
-
 type ArticleDocumentDataSlicesSlice = never;
 
 /**
@@ -348,7 +314,6 @@ export type MenuDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<MenuDocumentData>, "menu", Lang>;
 
 export type AllDocumentTypes =
-  | AboutusDocument
   | ArticleDocument
   | ArticlesDocument
   | ContactDocument
@@ -608,9 +573,6 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      AboutusDocument,
-      AboutusDocumentData,
-      AboutusDocumentDataSlicesSlice,
       ArticleDocument,
       ArticleDocumentData,
       ArticleDocumentDataSlicesSlice,

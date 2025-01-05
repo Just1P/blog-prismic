@@ -1,22 +1,28 @@
 {
-  "sublinks": {
-    "type": "Group",
-    "config": {
-      "label": "Sublinks",
-      "repeat": true,
-      "fields": {
-        "label": {
-          "type": "Text",
-          "config": {
-            "label": "Label"
-          }
-        },
-        "link": {
-          "type": "Link",
-          "config": {
-            "label": "Link",
-            "select": null,
-            "allowTargetBlank": true
+  "format": "custom",
+  "id": "menu",
+  "label": "menu",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "menuitems": {
+        "type": "Group",
+        "config": {
+          "label": "menuItems",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
           }
         }
       }
