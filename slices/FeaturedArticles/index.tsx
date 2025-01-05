@@ -11,7 +11,7 @@ const FeaturedArticles = ({ slice }: any) => {
   }
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 font-playfair">
       {/* Header */}
       <h1 className="text-6xl font-bold italic mb-8 text-center">Best of the week</h1>
       <div className="text-center mb-12">
@@ -24,7 +24,7 @@ const FeaturedArticles = ({ slice }: any) => {
       </div>
 
       {/* Articles Grid */}
-      <div className="container mx-auto p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
         {articles.map((item: any, index: number) => {
           const article = item.featured_articles;
 

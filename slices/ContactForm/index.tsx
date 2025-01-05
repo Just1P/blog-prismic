@@ -53,7 +53,7 @@ const ContactForm = ({ slice }: ContactFormProps) => {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
+    <div className="h-screen grid grid-cols-1 md:grid-cols-2 overflow-hidden">
       {/* Colonne Formulaire */}
       <div className="flex items-center justify-center bg-white p-12">
         <div className="max-w-md w-full">
@@ -90,7 +90,7 @@ const ContactForm = ({ slice }: ContactFormProps) => {
                 placeholder="Your Message"
                 required
                 rows={4}
-                className="w-full p-3 border border-gra-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none shadow-sm placeholder-gray-400"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none shadow-sm placeholder-gray-400"
               ></textarea>
             </div>
             <button
@@ -113,7 +113,7 @@ const ContactForm = ({ slice }: ContactFormProps) => {
       </div>
 
       {/* Colonne Image */}
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-screen">
         {slice.primary.main_image.url && (
           <Image
             src={slice.primary.main_image.url}

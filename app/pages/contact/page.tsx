@@ -8,7 +8,7 @@ export default async function ContactPage() {
   const page = await client.getSingle("contact"); 
 
   return (
-    <main className="container mx-auto p-8">
+    <main >
       <SliceZone slices={page.data.slices} components={components} />
     </main>
   );

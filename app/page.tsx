@@ -1,7 +1,7 @@
 import { createClient } from '@/prismicio';
 import { SliceZone } from '@prismicio/react';
 import { components } from '../slices';
-import Link from 'next/link';
+
 
 const client = createClient();
 

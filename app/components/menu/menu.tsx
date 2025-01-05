@@ -6,7 +6,7 @@ const Menu = async () => {
   const menu = await client.getSingle("menu");
 
   return (
-    <nav className="bg-white shadow-md p-4">
+    <nav className="bg-white shadow-md p-4 fixed top-0 left-0 w-full z-50">
       <ul className="flex space-x-6">
         {menu.data.menuitems.map((item: any, index: number) => (
           <li key={index} className="relative group">
@@ -18,7 +18,7 @@ const Menu = async () => {
             </PrismicNextLink>
             {/* Sous-menu (si présent) */}
             {item.sublinks && item.sublinks.length > 0 && (
-              <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition duration-300">
+              <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 z-50">
                 {item.sublinks.map((subitem: any, subIndex: number) => (
                   <li key={subIndex} className="border-b last:border-b-0">
                     <PrismicNextLink

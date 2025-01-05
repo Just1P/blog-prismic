@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fontsource/playfair-display": "^5.1.1",
+    "@next/font": "^14.2.15",
     "@prismicio/client": "^7.13.1",
     "@prismicio/helpers": "^2.3.9",
     "@prismicio/next": "^1.7.1",

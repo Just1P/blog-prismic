@@ -266,17 +266,6 @@ interface LandingPageDocumentData {
   description: prismic.RichTextField;
 
   /**
-   * main_image field in *landing_page*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: landing_page.main_image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  main_image: prismic.ImageField<never>;
-
-  /**
    * about field in *landing_page*
    *
    * - **Field Type**: Rich Text

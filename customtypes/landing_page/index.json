@@ -22,14 +22,6 @@
           "multi": "paragraph,preformatted,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "main_image": {
-        "type": "Image",
-        "config": {
-          "label": "main_image",
-          "constraint": {},
-          "thumbnails": []
-        }
-      },
       "about": {
         "type": "StructuredText",
         "config": {

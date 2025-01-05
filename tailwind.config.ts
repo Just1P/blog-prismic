@@ -2,6 +2,7 @@ module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./slices/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -9,7 +10,7 @@ module.exports = {
         fadeIn: "fadeIn 1.2s ease-out",
         slideUp: "slideUp 0.7s ease-out",
       },fontFamily: {
-        playfair: ['Playfair Display'],
+        playfair: ["Playfair Display", "serif"],
       },
       keyframes: {
         fadeIn: {
