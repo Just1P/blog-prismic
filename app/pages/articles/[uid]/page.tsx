@@ -1,4 +1,4 @@
-import { client } from '@/prismicio';
+import { createClient } from '@/prismicio';
 import { PrismicRichText } from '@prismicio/react';
 import Image from 'next/image';
 import { ArticleType } from '../../../types/article'; // Import du type existant
@@ -6,6 +6,7 @@ import { ArticleType } from '../../../types/article'; // Import du type existant
 type Props = {
   params: { uid: string };
 };
+const client = createClient();
 
 export default async function ArticlePage({ params }: Props) {
   // Récupérer l'article en fonction de son UID

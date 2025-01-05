@@ -1,7 +1,11 @@
-import * as prismic from '@prismicio/client';
+import * as prismic from "@prismicio/client";
+import { enableAutoPreviews } from "@prismicio/next";
 
-export const repositoryName = 'blog-prismic-esd'; // Remplace par ton repository
+export const repositoryName = "blog-prismic-esd"; 
 
-export const client = prismic.createClient(repositoryName, {
-  accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-});
+export function createClient(config: prismic.ClientConfig = {}) {
+  const client = prismic.createClient(repositoryName, config);
+  enableAutoPreviews({ client });
+
+  return client;
+}

@@ -1,8 +1,10 @@
-import { client } from '@/prismicio';
+import { createClient } from '@/prismicio';
 import { PrismicRichText } from '@prismicio/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArticleType } from '../../types/article'; 
+
+const client = createClient();
 
 export default async function ArticlesPage() {
   const articlesResponse = await client.getAllByType('article', {
@@ -50,7 +52,7 @@ export default async function ArticlesPage() {
               )}
             </div>
             <Link
-              href={`/articles/${article.uid}`}
+              href={`articles/${article.uid}`}
               className="text-blue-500 hover:underline mt-auto"
             >
               Read More →

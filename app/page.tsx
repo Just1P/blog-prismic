@@ -1,8 +1,10 @@
-import { client } from '../prismicio';
+import { createClient } from '@/prismicio';
 import { SliceZone } from '@prismicio/react';
-import { components } from '../slices'; // Import des composants de Slice
+import { components } from '../slices';
 import { PrismicRichText } from '@prismicio/react';
 import Image from 'next/image';
+
+const client = createClient();
 
 export default async function Page() {
   const page = await client.getSingle('landing_page', {

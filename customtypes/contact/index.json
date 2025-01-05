@@ -1,0 +1,22 @@
+{
+  "format": "page",
+  "id": "contact",
+  "label": "contact",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "contact_form": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

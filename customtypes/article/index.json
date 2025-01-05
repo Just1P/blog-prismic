@@ -1,5 +1,5 @@
 {
-  "format": "custom",
+  "format": "page",
   "id": "article",
   "label": "Article",
   "repeatable": true,
@@ -35,6 +35,10 @@
           "allowTargetBlank": true,
           "multi": "paragraph,preformatted,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone"
       }
     }
   }
