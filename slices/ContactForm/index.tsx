@@ -45,7 +45,7 @@ const ContactForm = ({ slice }: ContactFormProps) => {
       } else {
         setError("An error occurred. Please try again.");
       }
-    } catch (err) {
+    } catch  {
       setError("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);

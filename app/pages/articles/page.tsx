@@ -2,7 +2,6 @@ import { createClient } from '@/prismicio';
 import { PrismicRichText } from '@prismicio/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArticleType } from '../../types/article'; 
 
 const client = createClient();
 
@@ -14,7 +13,7 @@ export default async function ArticlesPage() {
   });
 
 
-  const articles = articlesResponse as ArticleType[];
+  const articles = articlesResponse;
 
   return (
     <main className="container mx-auto p-4">

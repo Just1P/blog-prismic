@@ -1,7 +1,6 @@
 import { createClient } from '@/prismicio';
 import { PrismicRichText } from '@prismicio/react';
 import Image from 'next/image';
-import { ArticleType } from '../../../types/article'; // Import du type existant
 
 type Props = {
   params: { uid: string };
@@ -11,7 +10,7 @@ const client = createClient();
 
 export default async function ArticlePage({ params }: Props) {
   const articleResponse = await client.getByUID('article', params.uid);
-  const article = articleResponse as ArticleType;
+  const article = articleResponse ;
 
   return (
     <main className="bg-gradient-to-br from-indigo-50 to-purple-50 min-h-screen">
