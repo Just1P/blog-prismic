@@ -31,8 +31,8 @@ export default async function ArticlesPage() {
                 <Image
                   src={article.data.main_image.url}
                   alt={article.data.main_image.alt || 'Article image'}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: "cover" }}
                   className="rounded-lg"
                 />
               ) : (

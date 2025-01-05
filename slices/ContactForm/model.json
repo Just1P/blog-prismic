@@ -34,6 +34,14 @@
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
+        },
+        "main_image": {
+          "type": "Image",
+          "config": {
+            "label": "Main Image",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}

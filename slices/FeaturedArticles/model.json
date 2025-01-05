@@ -12,15 +12,25 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "articles": {
-          "type": "Link",
+        "grouparticle": {
+          "type": "Group",
           "config": {
-            "label": "articles",
-            "select": "document",
-            "repeat": false,
-            "customtypes": [
-              "article"
-            ]
+            "label": "Group",
+            "repeat": true,
+            "fields": {
+              "featured_articles": {
+                "type": "Link",
+                "config": {
+                  "label": "featured_articles",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "article",
+                    "articles"
+                  ]
+                }
+              }
+            }
           }
         }
       },

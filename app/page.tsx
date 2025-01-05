@@ -1,12 +1,12 @@
 import { createClient } from '@/prismicio';
 import { SliceZone } from '@prismicio/react';
 import { components } from '../slices';
-import { PrismicRichText } from '@prismicio/react';
-import Image from 'next/image';
+import Link from 'next/link';
 
 const client = createClient();
 
-export default async function Page() {
+export default async function ArticlesPage() {
+  // Récupérer les données
   const page = await client.getSingle('landing_page', {
     fetchLinks: [
       'article.title',
@@ -15,30 +15,32 @@ export default async function Page() {
     ],
   });
 
+  // Filtrer les slices
+  const aboutSection = page.data.slices.find(
+    (slice: any) => slice.slice_type === 'about_section'
+  );
+
+  const featuredArticles = page.data.slices.find(
+    (slice: any) => slice.slice_type === 'featured_articles'
+  );
+
   return (
-    <main className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">{page.data.title}</h1>
-      <div className="text-lg mb-4">
-        <PrismicRichText field={page.data.description} />
-      </div>
+    <main className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+      {/* About Section */}
+      {aboutSection && (
+        <section>
+          <SliceZone slices={[aboutSection]} components={components} />
+        </section>
+      )}
 
-      <div className="rounded-lg shadow-lg mb-4">
-        {page.data.main_image?.url && (
-          <Image
-            src={page.data.main_image.url}
-            alt={page.data.main_image.alt || 'Main image'}
-            width={800}
-            height={500}
-            layout="responsive"
-          />
-        )}
-      </div>
+      {/* Featured Articles */}
+      {featuredArticles && (
+        <section className=" bg-white">
+          <SliceZone slices={[featuredArticles]} components={components} />
+        </section>
+      )}
 
-      {/* Conteneur parent pour alignement strictement horizontal */}
-      <h2 className="text-2xl font-bold mb-4">Featured Articles</h2>
-      <div className="flex flex-nowrap gap-6 overflow-x-auto">
-        <SliceZone slices={page.data.slices} components={components} />
-      </div>
+      
     </main>
   );
 }

@@ -4,6 +4,40 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AboutusDocumentDataSlicesSlice = AboutSectionSlice;
+
+/**
+ * Content for AboutUs documents
+ */
+interface AboutusDocumentData {
+  /**
+   * Slice Zone field in *AboutUs*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aboutus.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutusDocumentDataSlicesSlice>;
+}
+
+/**
+ * AboutUs document from Prismic
+ *
+ * - **API ID**: `aboutus`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutusDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AboutusDocumentData>,
+    "aboutus",
+    Lang
+  >;
+
 type ArticleDocumentDataSlicesSlice = never;
 
 /**
@@ -44,7 +78,7 @@ interface ArticleDocumentData {
   excerpt: prismic.RichTextField;
 
   /**
-   * `slices` field in *Article*
+   * Slice Zone field in *Article*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -52,7 +86,38 @@ interface ArticleDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<ArticleDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<ArticleDocumentDataSlicesSlice> /**
+   * Meta Title field in *Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: article.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: article.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Article*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
 }
 
 /**
@@ -170,7 +235,9 @@ export type ContactDocument<Lang extends string = string> =
     Lang
   >;
 
-type LandingPageDocumentDataSlicesSlice = FeaturedArticlesSlice;
+type LandingPageDocumentDataSlicesSlice =
+  | AboutSectionSlice
+  | FeaturedArticlesSlice;
 
 /**
  * Content for landing_page documents
@@ -260,7 +327,7 @@ export interface MenuDocumentDataMenuitemsItem {
    * - **API ID Path**: menu.menuitems[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link: prismic.Repeatable<prismic.LinkField>;
+  link: prismic.LinkField;
 }
 
 /**
@@ -292,11 +359,107 @@ export type MenuDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<MenuDocumentData>, "menu", Lang>;
 
 export type AllDocumentTypes =
+  | AboutusDocument
   | ArticleDocument
   | ArticlesDocument
   | ContactDocument
   | LandingPageDocument
   | MenuDocument;
+
+/**
+ * Primary content in *AboutSection → Default → Primary*
+ */
+export interface AboutSectionSliceDefaultPrimary {
+  /**
+   * Main Image field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.main_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Year field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.year
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  year: prismic.NumberField;
+
+  /**
+   * Details field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.details
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  details: prismic.RichTextField;
+
+  /**
+   * optionalDescription field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.optionaldescription
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  optionaldescription: prismic.RichTextField;
+}
+
+/**
+ * Default variation for AboutSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutSection*
+ */
+type AboutSectionSliceVariation = AboutSectionSliceDefault;
+
+/**
+ * AboutSection Shared Slice
+ *
+ * - **API ID**: `about_section`
+ * - **Description**: AboutSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSectionSlice = prismic.SharedSlice<
+  "about_section",
+  AboutSectionSliceVariation
+>;
 
 /**
  * Primary content in *ContactForm → Default → Primary*
@@ -331,6 +494,16 @@ export interface ContactFormSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   message: prismic.RichTextField;
+
+  /**
+   * Main Image field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.main_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
 }
 
 /**
@@ -364,18 +537,35 @@ export type ContactFormSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *FeaturedArticles → Default → Primary → Group*
+ */
+export interface FeaturedArticlesSliceDefaultPrimaryGrouparticleItem {
+  /**
+   * featured_articles field in *FeaturedArticles → Default → Primary → Group*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_articles.default.primary.grouparticle[].featured_articles
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  featured_articles: prismic.ContentRelationshipField<"article" | "articles">;
+}
+
+/**
  * Primary content in *FeaturedArticles → Default → Primary*
  */
 export interface FeaturedArticlesSliceDefaultPrimary {
   /**
-   * articles field in *FeaturedArticles → Default → Primary*
+   * Group field in *FeaturedArticles → Default → Primary*
    *
-   * - **Field Type**: Content Relationship
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: featured_articles.default.primary.articles
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **API ID Path**: featured_articles.default.primary.grouparticle[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  articles: prismic.ContentRelationshipField<"article">;
+  grouparticle: prismic.GroupField<
+    Simplify<FeaturedArticlesSliceDefaultPrimaryGrouparticleItem>
+  >;
 }
 
 /**
@@ -429,6 +619,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutusDocument,
+      AboutusDocumentData,
+      AboutusDocumentDataSlicesSlice,
       ArticleDocument,
       ArticleDocumentData,
       ArticleDocumentDataSlicesSlice,
@@ -445,11 +638,16 @@ declare module "@prismicio/client" {
       MenuDocumentData,
       MenuDocumentDataMenuitemsItem,
       AllDocumentTypes,
+      AboutSectionSlice,
+      AboutSectionSliceDefaultPrimary,
+      AboutSectionSliceVariation,
+      AboutSectionSliceDefault,
       ContactFormSlice,
       ContactFormSliceDefaultPrimary,
       ContactFormSliceVariation,
       ContactFormSliceDefault,
       FeaturedArticlesSlice,
+      FeaturedArticlesSliceDefaultPrimaryGrouparticleItem,
       FeaturedArticlesSliceDefaultPrimary,
       FeaturedArticlesSliceVariation,
       FeaturedArticlesSliceDefault,
