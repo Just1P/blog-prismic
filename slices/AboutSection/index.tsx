@@ -24,7 +24,7 @@ const AboutSection = ({ slice }: AboutSectionProps) => {
 
       {/* Content */}
       <div className="flex flex-col gap-6 justify-start h-full">
-        <h2 className="text-6xl font-bold leading-tight pb-48 pt-10">{slice.primary.title}</h2>
+        <h2 className="text-6xl font-bold leading-tight pb-20 pt-10">{slice.primary.title}</h2>
         <div className="text-lg leading-relaxed text-gray-700">
           <PrismicRichText field={slice.primary.description} />
         </div>
