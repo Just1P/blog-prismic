@@ -1,23 +1,22 @@
-import { createClient } from '@/prismicio';
-import { PrismicRichText } from '@prismicio/react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { createClient } from "@/prismicio";
+import { PrismicRichText } from "@prismicio/react";
+import Image from "next/image";
+import Link from "next/link";
 
 const client = createClient();
 
 export default async function ArticlesPage() {
-  const articlesResponse = await client.getAllByType('article', {
+  const articlesResponse = await client.getAllByType("article", {
     orderings: [
-      { field: 'document.first_publication_date', direction: 'desc' },
+      { field: "document.first_publication_date", direction: "desc" },
     ],
   });
-
 
   const articles = articlesResponse;
 
   return (
-    <main className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-6">All Articles</h1>
+    <main className="container mx-auto p-4 pt-20">
+      <h1 className="text-4xl font-bold mb-8">All Articles</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
@@ -29,7 +28,7 @@ export default async function ArticlesPage() {
               {article.data.main_image?.url ? (
                 <Image
                   src={article.data.main_image.url}
-                  alt={article.data.main_image.alt || 'Article image'}
+                  alt={article.data.main_image.alt || "Article image"}
                   fill
                   style={{ objectFit: "cover" }}
                   className="rounded-lg"
@@ -41,7 +40,7 @@ export default async function ArticlesPage() {
               )}
             </div>
             <h3 className="text-xl font-semibold mb-2">
-              {article.data.title || 'Untitled'}
+              {article.data.title || "Untitled"}
             </h3>
             <div className="text-sm text-gray-700 mb-4">
               {article.data.excerpt ? (

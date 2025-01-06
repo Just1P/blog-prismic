@@ -399,9 +399,90 @@ export type AboutSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *AboutSection → AboutSectionInverted → Primary*
+ */
+export interface AboutSectionSliceAboutSectionInvertedPrimary {
+  /**
+   * Main Image field in *AboutSection → AboutSectionInverted → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.aboutSectionInverted.primary.main_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *AboutSection → AboutSectionInverted → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.aboutSectionInverted.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *AboutSection → AboutSectionInverted → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.aboutSectionInverted.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Year field in *AboutSection → AboutSectionInverted → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.aboutSectionInverted.primary.year
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  year: prismic.NumberField;
+
+  /**
+   * Details field in *AboutSection → AboutSectionInverted → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.aboutSectionInverted.primary.details
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  details: prismic.RichTextField;
+
+  /**
+   * optionalDescription field in *AboutSection → AboutSectionInverted → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.aboutSectionInverted.primary.optionaldescription
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  optionaldescription: prismic.RichTextField;
+}
+
+/**
+ * AboutSectionInverted variation for AboutSection Slice
+ *
+ * - **API ID**: `aboutSectionInverted`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSectionSliceAboutSectionInverted =
+  prismic.SharedSliceVariation<
+    "aboutSectionInverted",
+    Simplify<AboutSectionSliceAboutSectionInvertedPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *AboutSection*
  */
-type AboutSectionSliceVariation = AboutSectionSliceDefault;
+type AboutSectionSliceVariation =
+  | AboutSectionSliceDefault
+  | AboutSectionSliceAboutSectionInverted;
 
 /**
  * AboutSection Shared Slice
@@ -591,8 +672,10 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       AboutSectionSlice,
       AboutSectionSliceDefaultPrimary,
+      AboutSectionSliceAboutSectionInvertedPrimary,
       AboutSectionSliceVariation,
       AboutSectionSliceDefault,
+      AboutSectionSliceAboutSectionInverted,
       ContactFormSlice,
       ContactFormSliceDefaultPrimary,
       ContactFormSliceVariation,
