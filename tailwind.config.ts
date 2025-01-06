@@ -9,7 +9,8 @@ module.exports = {
       animation: {
         fadeIn: "fadeIn 1.2s ease-out",
         slideUp: "slideUp 0.7s ease-out",
-      },fontFamily: {
+      },
+      fontFamily: {
         playfair: ["Playfair Display", "serif"],
       },
       keyframes: {

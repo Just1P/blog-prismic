@@ -4,10 +4,9 @@ import { repositoryName } from "@/prismicio";
 import Menu from "./components/menu/menu";
 import "./globals.css";
 
-// Importation et configuration de la police
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // Ajoute les poids nécessaires
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 

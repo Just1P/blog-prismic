@@ -9,7 +9,6 @@ export type AboutSectionProps = SliceComponentProps<Content.AboutSectionSlice>;
 const AboutSection = ({ slice }: AboutSectionProps) => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-7 pr-32 min-h-screen font-playfair ">
-      {/* Image */}
       <div className="relative w-full h-full">
         {slice.primary.main_image.url && (
           <Image
@@ -22,14 +21,14 @@ const AboutSection = ({ slice }: AboutSectionProps) => {
         )}
       </div>
 
-      {/* Content */}
       <div className="flex flex-col gap-6 justify-start h-full">
-        <h2 className="text-6xl font-bold leading-tight pb-20 pt-10">{slice.primary.title}</h2>
+        <h2 className="text-6xl font-bold leading-tight pb-20 pt-10">
+          {slice.primary.title}
+        </h2>
         <div className="text-lg leading-relaxed text-gray-700">
           <PrismicRichText field={slice.primary.description} />
         </div>
 
-        {/* Year and Details */}
         <div className="mt-8">
           <h3 className="text-4xl font-bold">{slice.primary.year}</h3>
           <div className="text-lg text-gray-700 mt-4">
@@ -37,7 +36,6 @@ const AboutSection = ({ slice }: AboutSectionProps) => {
           </div>
         </div>
 
-        {/* Optional Description */}
         {slice.primary.optionaldescription && (
           <div className="mt-8 text-lg text-gray-600">
             <PrismicRichText field={slice.primary.optionaldescription} />

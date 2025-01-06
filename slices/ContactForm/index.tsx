@@ -45,7 +45,7 @@ const ContactForm = ({ slice }: ContactFormProps) => {
       } else {
         setError("An error occurred. Please try again.");
       }
-    } catch  {
+    } catch {
       setError("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -54,11 +54,12 @@ const ContactForm = ({ slice }: ContactFormProps) => {
 
   return (
     <div className="h-screen grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-      {/* Colonne Formulaire */}
       <div className="flex items-center justify-center bg-white p-12">
         <div className="max-w-md w-full">
           <h2 className="text-4xl font-bold text-gray-800 mb-6">Contact Us</h2>
-          <p className="text-gray-500 mb-6">Let’s start with some details about you</p>
+          <p className="text-gray-500 mb-6">
+            Let’s start with some details about you
+          </p>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <input
@@ -106,13 +107,10 @@ const ContactForm = ({ slice }: ContactFormProps) => {
               Message sent successfully!
             </p>
           )}
-          {error && (
-            <p className="text-red-500 mt-4 text-center">{error}</p>
-          )}
+          {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
         </div>
       </div>
 
-      {/* Colonne Image */}
       <div className="relative w-full h-screen">
         {slice.primary.main_image.url && (
           <Image
