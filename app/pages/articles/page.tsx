@@ -1,5 +1,5 @@
 import { createClient } from "@/prismicio";
-import { asText } from "@/prismicio";
+import { asText } from "@prismicio/client"; // Import direct depuis le client
 import Image from "next/image";
 import Link from "next/link";
 
@@ -45,7 +45,7 @@ export default async function ArticlesPage() {
             <div className="text-sm text-gray-700 mb-4">
               {article.data.excerpt ? (
                 <p>
-                  {asText(article.data.excerpt).slice(0, 100)}...
+                  {asText(article.data.excerpt).slice(0, 290)}...
                 </p>
               ) : (
                 <p>No excerpt available.</p>
