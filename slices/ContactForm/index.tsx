@@ -56,7 +56,7 @@ const ContactForm = ({ slice }: ContactFormProps) => {
     <div className="h-screen grid grid-cols-1 md:grid-cols-2 overflow-hidden">
       <div className="flex items-center justify-center bg-white p-12">
         <div className="max-w-md w-full">
-          <h2 className="text-4xl font-bold text-gray-800 mb-6">Contact Us</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-6 font-playfair">Contact Us</h2>
           <p className="text-gray-500 mb-6">
             Let’s start with some details about you
           </p>
