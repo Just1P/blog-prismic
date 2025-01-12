@@ -13,8 +13,8 @@ export default async function ArticlePage({ params }: Props) {
   const article = articleResponse;
 
   return (
-    <main className="bg-gradient-to-br from-indigo-50 to-purple-50 min-h-screen">
-      <article className="max-w-4xl mx-auto bg-white shadow-xl rounded-xl overflow-hidden">
+    <main className="bg-gradient-to-br min-h-screen">
+      <article className="max-w-4xl mx-auto bg-white overflow-hidden">
         {article.data.main_image?.url && (
           <div className="relative w-full h-[400px]">
             <Image
@@ -28,7 +28,7 @@ export default async function ArticlePage({ params }: Props) {
         )}
 
         <div className="p-6 lg:p-10">
-          <h1 className="text-4xl font-bold mb-4 text-gray-900 leading-tight">
+          <h1 className="text-4xl font-bold mb-4 text-gray-900 leading-tight font-playfair">
             {article.data.title}
           </h1>
 

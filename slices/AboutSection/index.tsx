@@ -8,7 +8,7 @@ export type AboutSectionProps = SliceComponentProps<Content.AboutSectionSlice>;
 
 const AboutSection = ({ slice }: AboutSectionProps) => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-7 pr-32 min-h-screen font-playfair ">
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-7 pr-32 min-h-screen ">
       <div className="relative w-full h-full">
         {slice.primary.main_image.url && (
           <Image
@@ -22,7 +22,7 @@ const AboutSection = ({ slice }: AboutSectionProps) => {
       </div>
 
       <div className="flex flex-col gap-6 justify-start h-full">
-        <h2 className="text-6xl font-bold leading-tight pb-20 pt-10">
+        <h2 className="text-6xl font-bold leading-tight pb-20 pt-10 font-playfair">
           {slice.primary.title}
         </h2>
         <div className="text-lg leading-relaxed text-gray-700">

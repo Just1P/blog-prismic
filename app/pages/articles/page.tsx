@@ -1,5 +1,5 @@
 import { createClient } from "@/prismicio";
-import { PrismicRichText } from "@prismicio/react";
+import { asText } from "@/prismicio";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,7 +16,7 @@ export default async function ArticlesPage() {
 
   return (
     <main className="container mx-auto p-4 pt-20">
-      <h1 className="text-4xl font-bold mb-8">All Articles</h1>
+      <h1 className="text-4xl font-bold mb-8 font-playfair">All Articles</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
@@ -39,12 +39,14 @@ export default async function ArticlesPage() {
                 </div>
               )}
             </div>
-            <h3 className="text-xl font-semibold mb-2">
+            <h3 className="text-xl font-semibold mb-2 font-playfair">
               {article.data.title || "Untitled"}
             </h3>
             <div className="text-sm text-gray-700 mb-4">
               {article.data.excerpt ? (
-                <PrismicRichText field={article.data.excerpt} />
+                <p>
+                  {asText(article.data.excerpt).slice(0, 100)}...
+                </p>
               ) : (
                 <p>No excerpt available.</p>
               )}

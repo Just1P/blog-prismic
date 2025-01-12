@@ -14,8 +14,8 @@ const FeaturedArticles = ({ slice }: any) => {
   }
 
   return (
-    <section className="py-16 bg-gray-50 font-playfair">
-      <h1 className="text-6xl font-bold italic mb-8 text-center">
+    <section className="py-16 bg-gray-50">
+      <h1 className="text-6xl font-bold italic mb-8 text-center font-playfair">
         Best of the week
       </h1>
       <div className="text-center mb-12">
@@ -57,7 +57,7 @@ const FeaturedArticles = ({ slice }: any) => {
               </div>
 
               <div className="p-6 flex flex-col gap-4">
-                <h3 className="text-2xl font-bold">
+                <h3 className="text-2xl font-bold font-playfair">
                   {article.data.title || "Untitled"}
                 </h3>
                 <div className="text-sm text-gray-600 line-clamp-3">
